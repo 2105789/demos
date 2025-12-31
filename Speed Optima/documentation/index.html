@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeedOptima Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #0ea5e9;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .doc-nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .doc-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            padding: 16px 0;
+            overflow-x: auto;
+        }
+
+        .doc-nav a {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        .doc-nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        main {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 48px;
+            padding: 48px 0;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+        }
+
+        .sidebar h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray);
+            margin-bottom: 16px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar a {
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: block;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Content */
+        .content section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .content h2 {
+            font-size: 1.75rem;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border);
+            color: var(--primary);
+        }
+
+        .content h3 {
+            font-size: 1.25rem;
+            margin: 24px 0 12px;
+            color: var(--dark);
+        }
+
+        .content p {
+            color: var(--gray);
+            margin-bottom: 16px;
+        }
+
+        .content ul,
+        .content ol {
+            color: var(--gray);
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        .content li {
+            margin-bottom: 8px;
+        }
+
+        /* Code Block */
+        .code-block {
+            background: var(--dark);
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        /* Feature Cards */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .feature-card {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .feature-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-card h4::before {
+            content: '✓';
+            background: var(--success);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* FAQ */
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: var(--light);
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question:hover {
+            background: #f1f5f9;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        /* Step List */
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .step-list li {
+            position: relative;
+            padding-left: 60px;
+            padding-bottom: 24px;
+            border-left: 2px solid var(--border);
+            margin-left: 20px;
+        }
+
+        .step-list li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: -21px;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .step-list li:last-child {
+            border-left: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 48px 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>⚡ SpeedOptima Documentation</h1>
+            <p>Complete guide to optimizing your WordPress site with SpeedOptima performance plugin</p>
+        </div>
+    </header>
+
+    <nav class="doc-nav">
+        <div class="container">
+            <ul>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#configuration">Configuration</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main>
+            <aside class="sidebar">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#installation" class="active">Installation</a></li>
+                    <li><a href="#requirements">Requirements</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#javascript">JavaScript</a></li>
+                    <li><a href="#css">CSS</a></li>
+                    <li><a href="#lazyload">Lazy Loading</a></li>
+                    <li><a href="#cdn">CDN</a></li>
+                    <li><a href="#database">Database</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </aside>
+
+            <div class="content">
+                <section id="installation">
+                    <h2>📦 Installation</h2>
+                    <p>Follow these simple steps to install and activate SpeedOptima on your WordPress site:</p>
+
+                    <ol class="step-list">
+                        <li>
+                            <strong>Download the Plugin</strong>
+                            <p>Download the <code>speedoptima.zip</code> file from your purchase.</p>
+                        </li>
+                        <li>
+                            <strong>Upload to WordPress</strong>
+                            <p>Go to <strong>Plugins → Add New → Upload Plugin</strong> and select the zip file.</p>
+                        </li>
+                        <li>
+                            <strong>Activate the Plugin</strong>
+                            <p>Click <strong>Activate</strong> after the upload completes.</p>
+                        </li>
+                        <li>
+                            <strong>Configure Settings</strong>
+                            <p>Navigate to <strong>Settings → SpeedOptima</strong> to configure options.</p>
+                        </li>
+                    </ol>
+                </section>
+
+                <section id="requirements">
+                    <h2>⚙️ Requirements</h2>
+                    <ul>
+                        <li>WordPress 5.9 or higher</li>
+                        <li>PHP 7.4 or higher</li>
+                        <li>Modern web browser</li>
+                    </ul>
+                </section>
+
+                <section id="features">
+                    <h2>🚀 Features Overview</h2>
+                    <p>SpeedOptima includes a comprehensive set of performance optimization features:</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4>Defer JavaScript</h4>
+                            <p>Add defer attribute to scripts for faster page rendering.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Delay JavaScript</h4>
+                            <p>Delay non-critical scripts until user interaction.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Minify JS & CSS</h4>
+                            <p>Reduce file sizes by removing whitespace and comments.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Remove Unused CSS</h4>
+                            <p>Extract and inline only the CSS used on each page.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Lazy Loading</h4>
+                            <p>Defer loading of images and iframes until visible.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Local Google Fonts</h4>
+                            <p>Host Google Fonts locally for improved privacy and speed.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>CDN Rewrite</h4>
+                            <p>Rewrite URLs to serve assets from your CDN.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Database Optimization</h4>
+                            <p>Clean revisions, drafts, spam, and transients.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="javascript">
+                    <h2>📜 JavaScript Optimization</h2>
+
+                    <h3>Defer JavaScript</h3>
+                    <p>Adds the <code>defer</code> attribute to JavaScript files, allowing the browser to continue
+                        parsing HTML while scripts load in the background.</p>
+
+                    <h3>Delay JavaScript</h3>
+                    <p>Delays execution of scripts until user interaction (scroll, click, touch). Perfect for
+                        third-party scripts like analytics and chat widgets.</p>
+
+                    <h3>Exclusions</h3>
+                    <p>Add script handles or partial URLs to exclude specific scripts from optimization:</p>
+                    <div class="code-block">
+                        jquery.min.js
+                        analytics
+                        recaptcha</div>
+                </section>
+
+                <section id="css">
+                    <h2>🎨 CSS Optimization</h2>
+
+                    <h3>Remove Unused CSS</h3>
+                    <p>Analyzes each page and extracts only the CSS rules that are actually used, dramatically reducing
+                        file sizes.</p>
+
+                    <h3>Minify CSS</h3>
+                    <p>Compresses CSS files by removing whitespace, comments, and optimizing code.</p>
+
+                    <h3>Safelist Selectors</h3>
+                    <p>Add CSS selectors that should always be kept, useful for dynamic content:</p>
+                    <div class="code-block">
+                        .slick-*
+                        .swiper-*
+                        .modal</div>
+                </section>
+
+                <section id="lazyload">
+                    <h2>🖼️ Lazy Loading</h2>
+                    <p>SpeedOptima supports lazy loading for:</p>
+                    <ul>
+                        <li><strong>Images</strong> - Defers loading of images below the fold</li>
+                        <li><strong>iFrames</strong> - Lazy loads YouTube, Vimeo, and other embedded content</li>
+                        <li><strong>Videos</strong> - Delays video loading until visible</li>
+                        <li><strong>Background Images</strong> - CSS background images can be lazy loaded</li>
+                    </ul>
+                </section>
+
+                <section id="cdn">
+                    <h2>🌐 CDN Integration</h2>
+                    <p>Enable CDN rewriting to serve static assets from your Content Delivery Network:</p>
+
+                    <ol>
+                        <li>Enable CDN Rewrite in settings</li>
+                        <li>Enter your CDN URL (e.g., <code>https://cdn.example.com</code>)</li>
+                        <li>Specify directories to include (default: <code>wp-content,wp-includes</code>)</li>
+                    </ol>
+                </section>
+
+                <section id="database">
+                    <h2>🗄️ Database Optimization</h2>
+                    <p>Clean up your WordPress database to improve performance:</p>
+
+                    <ul>
+                        <li><strong>Post Revisions</strong> - Remove old post revisions</li>
+                        <li><strong>Auto-Drafts</strong> - Delete automatic drafts</li>
+                        <li><strong>Trashed Posts</strong> - Empty the trash</li>
+                        <li><strong>Spam Comments</strong> - Remove spam comments</li>
+                        <li><strong>Expired Transients</strong> - Clean expired transients</li>
+                    </ul>
+
+                    <p>You can also schedule automatic optimization (daily, weekly, or monthly).</p>
+                </section>
+
+                <section id="faq">
+                    <h2>❓ Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question">Will SpeedOptima break my site?</div>
+                        <div class="faq-answer">
+                            <p>SpeedOptima is designed to be safe and includes exclusion options for any scripts or
+                                styles that may cause issues. Always test changes on a staging site first.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">Is it compatible with caching plugins?</div>
+                        <div class="faq-answer">
+                            <p>Yes! SpeedOptima works alongside popular caching plugins like WP Rocket, W3 Total Cache,
+                                and LiteSpeed Cache. Clear your cache after making changes.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">Does it support WooCommerce?</div>
+                        <div class="faq-answer">
+                            <p>Absolutely. SpeedOptima includes WooCommerce-specific optimizations and options to
+                                disable WooCommerce scripts on non-shop pages.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">How do I exclude a script from deferral?</div>
+                        <div class="faq-answer">
+                            <p>Go to Settings → SpeedOptima → JavaScript and add the script handle or partial URL to the
+                                "Excluded from Deferral" textarea, one per line.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">Will uninstalling delete my data?</div>
+                        <div class="faq-answer">
+                            <p>Only if you enable "Clean Uninstall" in the Tools section. By default, your settings are
+                                preserved if you deactivate or reinstall the plugin.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">How do I clear the cache?</div>
+                        <div class="faq-answer">
+                            <p>Use the "Clear Cache" buttons in the plugin settings or click SpeedOptima → Clear Cache
+                                in the admin bar.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="support">
+                    <h2>💬 Support</h2>
+                    <p>Need help? Here are your options:</p>
+                    <ul>
+                        <li><strong>Documentation:</strong> You're reading it!</li>
+                        <li><strong>Email Support:</strong> support@speedoptima.com</li>
+                        <li><strong>Community Forum:</strong> speedoptima.com/forum</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 SpeedOptima. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Active sidebar link
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.sidebar a').forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === '#' + current) {
+                    a.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
