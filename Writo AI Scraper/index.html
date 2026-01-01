@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writo AI Scraper - Automated Content Generation</title>
+    <meta name="description" content="Writo AI Scraper automates your WordPress content creation using Google Gemini AI. Scrape, rewrite, and publish in seconds.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <nav class="navbar">
+            <div class="container">
+                <a href="#" class="logo">
+                    <span class="logo-icon">✍️</span> Writo AI
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                    <li><a href="documentation.html" class="btn btn-outline">Documentation</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="hero-content container">
+            <div class="hero-badge">WordPress Plugin</div>
+            <h1>Automate Your Blog with <span class="gradient-text">AI Power</span></h1>
+            <p class="hero-subtitle">Writo AI Scraper scrapes content from any website and uses Google Gemini AI to rewrite it into unique, SEO-optimized blog posts. Autopilot your content strategy.</p>
+            <div class="hero-actions">
+                <a href="#settings" class="btn btn-primary btn-lg">Explore Settings</a>
+                <a href="documentation.html" class="btn btn-ghost btn-lg">Read Docs →</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-value">5+</span>
+                    <span class="stat-label">AI Models</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">∞</span>
+                    <span class="stat-label">Sources</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">100%</span>
+                    <span class="stat-label">Automated</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-glow"></div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Features</span>
+                <h2>Everything You Need to <span class="gradient-text">Scale Content</span></h2>
+                <p>Powerful automation features designed for modern content creators.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Smart Scraping</h3>
+                    <p>Intelligent heuristics to identify article pages and avoid navigation or archive pages. Hub mode for discovering linked articles.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Gemini AI Rewriting</h3>
+                    <p>Uses Google's latest Gemini models (3 Pro, Flash, Lite) to rewrite content into unique, SEO-friendly blog posts with structured JSON output.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📂</div>
+                    <h3>Auto-Categorization</h3>
+                    <p>AI automatically selects the best matching categories for each post from your pre-defined list. No manual tagging needed.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🖼️</div>
+                    <h3>Image Handling</h3>
+                    <p>Automatically extracts OG:Image and lazy-loaded images, sideloads them to your media library, and sets featured images.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>Scheduled Automation</h3>
+                    <p>Set it and forget it. Schedule runs hourly, daily, or weekly. Control posts per source and global limits per run.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Standard</h3>
+                    <p>Built with WordPress Coding Standards. Nonces, sanitization, escaping, and a clean uninstall process included.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Workflow</span>
+                <h2>How It <span class="gradient-text">Works</span></h2>
+            </div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <h4>Configure Sources</h4>
+                    <p>Add your target website URLs to the settings panel. One URL per line.</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <h4>AI Scrapes & Rewrites</h4>
+                    <p>On schedule or manual trigger, the plugin scrapes content and sends it to Gemini AI.</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <h4>Publish Automatically</h4>
+                    <p>Unique posts are created, categorized, and published (or saved as drafts) automatically.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Settings Preview Section -->
+    <section id="settings" class="settings-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Admin Panel</span>
+                <h2>Intuitive <span class="gradient-text">Settings</span></h2>
+                <p>A clean, card-based interface aligned with WordPress standards.</p>
+            </div>
+            <div class="settings-preview">
+                <div class="mock-panel">
+                    <div class="mock-header">
+                        <span class="mock-dot red"></span>
+                        <span class="mock-dot yellow"></span>
+                        <span class="mock-dot green"></span>
+                        <span class="mock-title">Writo AI Settings</span>
+                    </div>
+                    <div class="mock-body">
+                        <div class="mock-card">
+                            <h5>General Configuration</h5>
+                            <div class="mock-field">
+                                <label>Gemini API Key</label>
+                                <input type="password" value="AIza•••••••••••••" disabled>
+                            </div>
+                            <div class="mock-field">
+                                <label>Gemini Model</label>
+                                <select disabled><option>gemini-3-pro-preview</option></select>
+                            </div>
+                            <div class="mock-field">
+                                <label>Post Status</label>
+                                <select disabled><option>Publish Immediately</option></select>
+                            </div>
+                        </div>
+                        <div class="mock-card">
+                            <h5>Scraping & Automation</h5>
+                             <div class="mock-field">
+                                <label>Source URLs</label>
+                                <textarea disabled>https://news.example.com/
+https://blog.example.org/</textarea>
+                            </div>
+                            <div class="mock-row">
+                                <div class="mock-field small">
+                                    <label>Scrape Depth</label>
+                                    <input type="number" value="2" disabled>
+                                </div>
+                                <div class="mock-field small">
+                                    <label>Posts Per Source</label>
+                                    <input type="number" value="3" disabled>
+                                </div>
+                            </div>
+                            <div class="mock-field">
+                                <label>Schedule</label>
+                                <div class="mock-row-inline">
+                                    <select disabled><option>Hourly</option></select>
+                                    <button class="mock-btn">Write Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Writo AI Scraper. Built for WordPress.</p>
+                <a href="documentation.html">Full Documentation</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
